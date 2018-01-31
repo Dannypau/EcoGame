@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EcoGameModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EcoGameModelStoreContainer">
+    <EntitySet Name="Perfils" EntityType="EcoGameModel.Store.Perfils" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="EcoGameModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Animals" EntityType="EcoGameModel.Store.Animals" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ecosystems" EntityType="EcoGameModel.Store.Ecosystems" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PerfilUser" Association="EcoGameModel.Store.PerfilUser">
+      <End Role="Perfil" EntitySet="Perfils" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="EcosystemAnimal" Association="EcoGameModel.Store.EcosystemAnimal">
+      <End Role="Ecosystem" EntitySet="Ecosystems" />
+      <End Role="Animal" EntitySet="Animals" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Perfils">
+    <Key>
+      <PropertyRef Name="ProfileId" />
+    </Key>
+    <Property Name="ProfileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameProfile" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameUser" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PswUser" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Perfil_ProfileId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Animals">
+    <Key>
+      <PropertyRef Name="AnimalId" />
+    </Key>
+    <Property Name="AnimalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoundAnimal" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DescAnimal" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImgAnimal" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NameAnimal" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ecosystem_EcosystemId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ecosystems">
+    <Key>
+      <PropertyRef Name="EcosystemId" />
+    </Key>
+    <Property Name="EcosystemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImgEcosystem" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DescEcosystem" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NameEcosystem" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RegEcosystem" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="PerfilUser">
+    <End Role="Perfil" Type="EcoGameModel.Store.Perfils" Multiplicity="1" />
+    <End Role="User" Type="EcoGameModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfil">
+        <PropertyRef Name="ProfileId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Perfil_ProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EcosystemAnimal">
+    <End Role="Ecosystem" Type="EcoGameModel.Store.Ecosystems" Multiplicity="1" />
+    <End Role="Animal" Type="EcoGameModel.Store.Animals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ecosystem">
+        <PropertyRef Name="EcosystemId" />
+      </Principal>
+      <Dependent Role="Animal">
+        <PropertyRef Name="Ecosystem_EcosystemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EcoGameModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="EcoGameModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProfileSet" EntityType="EcoGameModel.Profile" />
+          <EntitySet Name="UserSet" EntityType="EcoGameModel.User" />
+          <EntitySet Name="AnimalSet" EntityType="EcoGameModel.Animal" />
+          <EntitySet Name="EcosystemSet" EntityType="EcoGameModel.Ecosystem" />
+          <AssociationSet Name="PerfilUser" Association="EcoGameModel.PerfilUser">
+            <End Role="Perfil" EntitySet="ProfileSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="EcosystemAnimal" Association="EcoGameModel.EcosystemAnimal">
+            <End Role="Ecosystem" EntitySet="EcosystemSet" />
+            <End Role="Animal" EntitySet="AnimalSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ProfileId" />
+          </Key>
+          <Property Name="ProfileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameProfile" Type="String" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="EcoGameModel.PerfilUser" FromRole="Perfil" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameUser" Type="String" Nullable="false" />
+          <Property Name="PswUser" Type="String" Nullable="false" />
+          <NavigationProperty Name="Perfil" Relationship="EcoGameModel.PerfilUser" FromRole="User" ToRole="Perfil" />
+        </EntityType>
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalId" />
+          </Key>
+          <Property Name="AnimalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SoundAnimal" Type="String" Nullable="false" />
+          <Property Name="DescAnimal" Type="String" Nullable="false" />
+          <Property Name="ImgAnimal" Type="String" Nullable="false" />
+          <Property Name="NameAnimal" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ecosystem" Relationship="EcoGameModel.EcosystemAnimal" FromRole="Animal" ToRole="Ecosystem" />
+        </EntityType>
+        <EntityType Name="Ecosystem">
+          <Key>
+            <PropertyRef Name="EcosystemId" />
+          </Key>
+          <Property Name="EcosystemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgEcosystem" Type="String" Nullable="false" />
+          <Property Name="DescEcosystem" Type="String" Nullable="false" />
+          <Property Name="NameEcosystem" Type="String" Nullable="false" />
+          <Property Name="RegEcosystem" Type="String" Nullable="false" />
+          <NavigationProperty Name="Animals" Relationship="EcoGameModel.EcosystemAnimal" FromRole="Ecosystem" ToRole="Animal" />
+        </EntityType>
+        <Association Name="PerfilUser">
+          <End Type="EcoGameModel.Profile" Role="Perfil" Multiplicity="1" />
+          <End Type="EcoGameModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="EcosystemAnimal">
+          <End Type="EcoGameModel.Ecosystem" Role="Ecosystem" Multiplicity="1" />
+          <End Type="EcoGameModel.Animal" Role="Animal" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EcoGameModelStoreContainer" CdmEntityContainer="EcoGameModelContainer">
+    <EntitySetMapping Name="ProfileSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EcoGameModel.Profile)">
+        <MappingFragment StoreEntitySet="Perfils">
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="NameProfile" ColumnName="NameProfile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EcoGameModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+          <ScalarProperty Name="PswUser" ColumnName="PswUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnimalSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EcoGameModel.Animal)">
+        <MappingFragment StoreEntitySet="Animals">
+          <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+          <ScalarProperty Name="SoundAnimal" ColumnName="SoundAnimal" />
+          <ScalarProperty Name="DescAnimal" ColumnName="DescAnimal" />
+          <ScalarProperty Name="ImgAnimal" ColumnName="ImgAnimal" />
+          <ScalarProperty Name="NameAnimal" ColumnName="NameAnimal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EcosystemSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EcoGameModel.Ecosystem)">
+        <MappingFragment StoreEntitySet="Ecosystems">
+          <ScalarProperty Name="EcosystemId" ColumnName="EcosystemId" />
+          <ScalarProperty Name="ImgEcosystem" ColumnName="ImgEcosystem" />
+          <ScalarProperty Name="DescEcosystem" ColumnName="DescEcosystem" />
+          <ScalarProperty Name="NameEcosystem" ColumnName="NameEcosystem" />
+          <ScalarProperty Name="RegEcosystem" ColumnName="RegEcosystem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PerfilUser" TypeName="EcoGameModel.PerfilUser" StoreEntitySet="Users">
+      <EndProperty Name="Perfil">
+        <ScalarProperty Name="ProfileId" ColumnName="Perfil_ProfileId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EcosystemAnimal" TypeName="EcoGameModel.EcosystemAnimal" StoreEntitySet="Animals">
+      <EndProperty Name="Ecosystem">
+        <ScalarProperty Name="EcosystemId" ColumnName="Ecosystem_EcosystemId" />
+      </EndProperty>
+      <EndProperty Name="Animal">
+        <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -3,9 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,22 +18,65 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
+                @Html.ActionLink("Jugando con animales", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+               
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Sobre nosotros", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contactos", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Perfiles", "Index", "Profile")</li>
+                    <li>@Html.ActionLink("Animales", "Index", "Animal")</li>
+                    <li>@Html.ActionLink("Ecosistemas", "Index", "Ecosystem")</li>
+                    <li>@Html.ActionLink("Usuarios", "Index", "User")</li>
                 </ul>
+                
             </div>
+            
+            
         </div>
     </div>
     <div class="container body-content">
+        <div id="my-carousel" class="carousel slide" data-ride="carousel" >
+            <ol class="carousel-indicators">
+                <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#my-carousel" data-slide-to="1"></li>
+                <li data-target="#my-carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="@Url.Content("~/Images/logo_museo.jpg")" style="height: 50vh; width: 50vh; text-align:center" />
+                    <div class="carousel-caption">
+                        
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="@Url.Content("~/Images/EPN_logo_.jpg")" style="height: 50vh; width: 50vh; text-align:center" />
+                    <div class="carousel-caption">
+                       
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="@Url.Content("~/Images/Jugando_animales_logo.jpg")" style="height: 50vh; width: 50vh; text-align:center" />
+                    <div class="carousel-caption">
+                        
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Jugando con animales</p>
         </footer>
     </div>
 
