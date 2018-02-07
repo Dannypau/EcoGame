@@ -11,13 +11,19 @@ namespace EcoGame
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Animal
     {
         public int AnimalId { get; set; }
+
+        [Required]
         public string SoundAnimal { get; set; }
+        [Required]
         public string DescAnimal { get; set; }
+        [Required]
         public string ImgAnimal { get; set; }
+        [Required]
         public string NameAnimal { get; set; }
     
         public virtual Ecosystem Ecosystem { get; set; }

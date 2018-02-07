@@ -1,0 +1,44 @@
+﻿@model EcoGame.User
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <h2>Login</h2>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+</head>
+<body>
+   
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(model => model.NameUser)
+            @Html.TextBoxFor(model => model.NameUser, null, "UserName")
+            <br />
+
+            @Html.LabelFor(m => m.PswUser)
+            @Html.TextBoxFor(m => m.PswUser)
+            <input type="submit" />
+            @Html.ValidationSummary()
+        }
+
+
+
+
+
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Jugando con animales</p>
+        </footer>
+    
+</body>
+</html>
