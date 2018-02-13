@@ -266,6 +266,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\Login.cshtml" />
     <Content Include="Views\Login\Player.cshtml" />
+    <Content Include="Views\AnimalPlay\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
