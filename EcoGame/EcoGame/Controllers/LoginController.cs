@@ -32,7 +32,7 @@ namespace EcoGame.Controllers
                 
                     if(objCustomer.Perfil.ProfileId == 2)
                     {
-                        return RedirectToAction("Admin", "Login");
+                        return RedirectToAction("Player", "Login");
                      }
                     else
                      {

@@ -265,7 +265,7 @@
     <Content Include="Views\Ecosystem\Delete.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\Login.cshtml" />
-    <Content Include="Views\Login\Admin.cshtml" />
+    <Content Include="Views\Login\Player.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
