@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EcoGame.Animal>
+﻿<div class="jumbotron" style="background-color:white; opacity: 0.8;">
+    @model IEnumerable<EcoGame.Animal>
 
 @{
     ViewBag.Title = "Index";
@@ -27,27 +28,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoundAnimal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescAnimal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImgAnimal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameAnimal)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { AnimalId = item.AnimalId }) |
-           
-            @Html.ActionLink("Delete", "Delete", new { AnimalId = item.AnimalId })
-            @Html.ActionLink("Details", "Index", "AnimalEcosystemDetail")
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameAnimal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { AnimalId = item.AnimalId }) |
+
+                @Html.ActionLink("Delete", "Delete", new { AnimalId = item.AnimalId })
+                @Html.ActionLink("Details", "Index", "AnimalEcosystemDetail")
+            </td>
+        </tr>
+    }
 
 </table>
+    </div>

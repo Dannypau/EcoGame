@@ -1,4 +1,5 @@
-﻿@model EcoGame.Ecosystem
+﻿<div class="jumbotron" style="background-color:white; opacity: 0.8;">
+    @model EcoGame.Ecosystem
 
 @{
     ViewBag.Title = "Create";
@@ -7,10 +8,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Ecosystem</h4>
         <hr />
@@ -57,4 +58,5 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
+</div>
 </div>
