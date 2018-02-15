@@ -4,52 +4,117 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>EcoGame - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     
 </head>
 <body>
-    
-    <div class="container body-content">
-        <div id="my-carousel" class="carousel slide" data-ride="carousel" >
-            <ol class="carousel-indicators">
-                <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#my-carousel" data-slide-to="1"></li>
-                <li data-target="#my-carousel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="@Url.Content("~/Images/logo_museo.jpg")" style="height: 50vh; width: 50vh; text-align:center" />
-                    <div class="carousel-caption">
-                        
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="@Url.Content("~/Images/EPN_logo_.jpg")" style="height: 50vh; width: 50vh; text-align:center" />
-                    <div class="carousel-caption">
-                       
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="@Url.Content("~/Images/Jugando_animales_logo.jpg")" style="height: 50vh; width: 50vh; text-align:center" />
-                    <div class="carousel-caption">
-                        
-                    </div>
-                </div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-        </div>
 
-        @RenderBody()
-        <hr />
+    <style>
+        body {
+            background-image: url("../../Images/fodo.jpg");
+            
+        }
+
+        h1 {
+            color: red;
+        }
+
+        h2 {
+            color: darkgreen;
+        }
+
+        footer {
+            color: white;
+        }
+        #my-carousel {
+            background-color: white;
+            opacity: 0.8;
+        }
+        ol {
+            background-color: black;
+            opacity: 0.2;
+        }
+    </style>
+
+    <header>
+        <div class="container body-content">
+            <div id="my-carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#my-carousel" data-slide-to="1"></li>
+                    <li data-target="#my-carousel" data-slide-to="2"></li>
+                    <li data-target="#my-carousel" data-slide-to="3"></li>
+                </ol>
+                <br /><br />
+                <div class="carousel-inner" align="center" style="height: auto">
+                    <div class="item active">
+
+                        <img src="@Url.Content("~/Images/logo_museo.jpg")" style="height: 30vh" class="img-fluid" alt="Responsive image" />
+                        <br /><div class="carousel-caption">
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="@Url.Content("~/Images/EPN_logo_.jpg")" style="height: 30vh" class="img-fluid" alt="Responsive image" />
+                        <br /><div class="carousel-caption">
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="@Url.Content("~/Images/logo.png")" style="height: 30vh" class="img-fluid" alt="Responsive image" />
+                        <br /><div class="carousel-caption">
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="@Url.Content("~/Images/Jugando_animales_logo.jpg")" style="height: 30vh" class="img-fluid" alt="Responsive image" />
+                        <br /><div class="carousel-caption">
+
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+                <a class="left carousel-control" href="#my-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#my-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+            <br />
+
+            @RenderBody()
+            <hr />
+        </div>
+    </header>
+    
+
+    <div class="container body-content">
+        
         <footer>
-            <p>&copy; @DateTime.Now.Year - Jugando con animales</p>
+
+            <table style="width:100%; background-color:black; opacity: 0.8;">
+                <tr>
+                    <td rowspan="2"></td>
+                    <td rowspan="2">&copy;@DateTime.Now.Year - EcoGame</td>
+                    <th rowspan="2">Integrantes:</th>
+                    <td>
+                        <ul>
+                            <li>Daniela Ramos</li>
+                            <li>Verónica Jácome</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Jesenia Erraez</li>
+                            <li>Tania Guamushig</li>
+                        </ul>
+                    </td>
+                </tr>
+
+            </table>
         </footer>
     </div>
 

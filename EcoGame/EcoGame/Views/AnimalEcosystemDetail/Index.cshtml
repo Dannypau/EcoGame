@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EcoGame.ViewModels.AnimalVM>
+﻿<div class="jumbotron" style="background-color:white; opacity: 0.8;">
+    @model IEnumerable<EcoGame.ViewModels.AnimalVM>
 
 @{
     ViewBag.Title = "Index";
@@ -30,29 +31,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoundAnimal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescAnimal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImgAnimal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameAnimal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameEcosystem)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { AnimalId = item.AnimalId }) |
-            @Html.ActionLink("Details", "Details", new { AnimalId = item.AnimalId }) |
-            @Html.ActionLink("Delete", "Delete", new { AnimalId = item.AnimalId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoundAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameAnimal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameEcosystem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { AnimalId = item.AnimalId }) |
+                @Html.ActionLink("Details", "Details", new { AnimalId = item.AnimalId }) |
+                @Html.ActionLink("Delete", "Delete", new { AnimalId = item.AnimalId })
+            </td>
+        </tr>
+    }
 
 </table>
+</div>
