@@ -11,11 +11,18 @@ namespace EcoGame
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+
     public partial class User
     {
         public int UserId { get; set; }
+        [Required(ErrorMessage = "Ingrese su usuario")]
+        [Models.ExcludeSpecialCharacters(ErrorMessage = "No se acepta caracteres especiales")]
         public string NameUser { get; set; }
+        [Required (ErrorMessage ="Ingrese su contraseña")]
+        [MaxLength (10)]
+       
         public string PswUser { get; set; }
     
         public virtual Profile Perfil { get; set; }

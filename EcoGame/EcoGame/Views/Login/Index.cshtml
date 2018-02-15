@@ -8,15 +8,30 @@
 
         @using (Html.BeginForm())
         {
-            @Html.LabelFor(model => model.NameUser)
+            @Html.LabelFor(model => model.NameUser,"Usuario   ")
             @Html.TextBoxFor(model => model.NameUser, null, "UserName")
             <br />
             <br />
-            @Html.LabelFor(m => m.PswUser)
+            @Html.LabelFor(m => m.PswUser, "Contraseña ")
             @Html.TextBoxFor(m => m.PswUser)
-            <input type="submit" />
+            <div class="jumbotron">
+        
+
+   
+
+
+                
+                <a href="" class="btn btn-primary btn-lg"><input type="submit" value="INGRESAR"/>  </a>
+               
+
+            </div>
+           
             @Html.ValidationSummary()
         }
+
+    <div>
+        @Html.ActionLink("Volver", "Admin", "Login")
+    </div>
 
         <hr />
 </div>

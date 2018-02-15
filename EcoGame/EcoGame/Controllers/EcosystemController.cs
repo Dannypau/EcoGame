@@ -118,15 +118,29 @@ namespace EcoGame.Controllers
             using (EcoGameModelContainer DBContext = new EcoGameModelContainer())
             //using para usar en este contexto
             {
-                var u = (from q in DBContext.EcosystemSet
-                         where q.EcosystemId == std.EcosystemId
-                         select q).FirstOrDefault();
+                if (ModelState.IsValid)
+                {
+                    var u = (from q in DBContext.EcosystemSet
+                             where q.EcosystemId == std.EcosystemId
+                             select q).FirstOrDefault();
 
-                DBContext.EcosystemSet.Remove(u);
-                DBContext.SaveChanges();
+                    DBContext.EcosystemSet.Remove(u);
 
+                    try
+                    {
+                        DBContext.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(" ", "El ecosistema tiene animales registrados");
+
+                    }
+                }
+                return View();
             }
-            return RedirectToAction("Index");
+            
+
         }
     }
 }
