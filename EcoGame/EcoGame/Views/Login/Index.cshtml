@@ -1,44 +1,37 @@
-﻿@model EcoGame.User
+﻿<div class="jumbotron" style="background-color:white; opacity: 0.8;">
+    @model EcoGame.User
 
-@{
-    ViewBag.Title = "Index";
+    @{
+        ViewBag.Title = "Index";
 
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-
-    <h2>Login</h2>
-    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
-</head>
-<body>
-   
-
+    }
 
         @using (Html.BeginForm())
         {
-            @Html.LabelFor(model => model.NameUser)
+            @Html.LabelFor(model => model.NameUser,"Usuario   ")
             @Html.TextBoxFor(model => model.NameUser, null, "UserName")
             <br />
+            <br />
+            @Html.LabelFor(m => m.PswUser, "Contraseña ")
+            @Html.PasswordFor(m => m.PswUser);
+            <div class="jumbotron">
+        
 
-            @Html.LabelFor(m => m.PswUser)
-            @Html.TextBoxFor(m => m.PswUser)
-            <input type="submit" />
+   
+
+
+                
+                <a href="" class="btn btn-primary btn-lg"><input type="submit" value="INGRESAR"/>  </a>
+               
+
+            </div>
+           
             @Html.ValidationSummary()
         }
 
-
-
-
-
+    <div>
+        @Html.ActionLink("Volver", "Admin", "Login")
+    </div>
 
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Jugando con animales</p>
-        </footer>
-    
-</body>
-</html>
+</div>
