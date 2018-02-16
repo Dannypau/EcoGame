@@ -19,8 +19,16 @@ namespace EcoGame.Models
         [ExcludeSpecialCharacters(ErrorMessage = "No se acepta caracteres especiales")]
         public string AnimalName { get; set; }
 
+        [Required]
+        [MaxLength(2)]
+        [ExcludeSpecialCharacters(ErrorMessage = "No se acepta caracteres especiales")]
+        public string ImgAnimal { get; set; }
 
 
+        [Required]
+        [MaxLength(2)]
+        [ExcludeSpecialCharacters(ErrorMessage = "No se acepta caracteres especiales")]
+        public string DescAnimal { get; set; }
 
 
     }
