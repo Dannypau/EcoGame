@@ -1,107 +1,95 @@
 ﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        #div1 {
+            width: 600px;
+            height: 375px;
+            padding: 10px;
+            text-align: center;
+        }
+       
+    </style>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+          
+
+            var img = document.createElement("img");
+            var data = ev.dataTransfer.getData("text");
+            if (data == "drag2") {
+                img.src = "/Images/";
+                ev.target.appendChild(img);
+            } else {
+                img.src = "/Images/tucan_mataje.png";
+                ev.target.appendChild(img);
+            }
+           
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            if (data == "drag2") {
+
+                var img = document.createElement("img");
+                ev.target.appendChild(document.getElementById("drag2"));
+               
+            } else if (data == "drag1") {
+                ev.target.appendChild(document.getElementById("drag1"));
+            }
+           
+        }
+        function erase(ev) {
+            document.getElementById("div1").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    <div class="jumbotron" style="background-color:white; opacity: 0.8;">
 
 
-<script src="~/Scripts/jquery-2.1.1.min.js"></script>  
 
-<div style="width:100%">
-    <div id="left" style="float:left;width:30%;">
-        <table>
+
+        <br>
+        <p>ECOSISTEMA MATAJE</p>
+        <table class="egt">
+
+
+
             <tr>
-                <td>
-                    <h1>Employee List</h1>
-                </td>
+                <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="drag1" src="~/Images/mataje2.png" ondragover="erase(event)"></div>
+                 <td>La reserva protege los manglares que crecen en el estuario que forman los ríos Cayapas y Mataje en el norte de la provincia de Esmeraldas; al hacerlo, custodia tanto la gran biodiversidad que existe como las tradiciones milenarias de las comunidades y pueblos ancestrales aledaños</td>
+
+
+
             </tr>
+
             <tr>
-                <td>
-                    <div id="divleft">
-                        <ul id="EmployeeList"></ul>
-                    </div>
-                </td>
+                <td><img id="drag1" src="~/Images/tucan3.png" draggable="true" ondragstart="drag(event)"></td>
+
+                <td><img id="drag2" src="~/Images/sahino.png" draggable="true" ondragstart="drag(event)"></td>
+
+
+
+
+
+
             </tr>
+
         </table>
-    </div>
-    <div id="left" style="float:left;width:70%;">
-        <table>
-            <tr>
-                <td>
-                    <h1>Selected Employee</h1>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="divright">
-                        <ul id="selectedEmployeeList"></ul>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
-       <style type="text/css">
-   table, td {
-     background-color: mediumaquamarine;
-     border: ridge;
-   }
-   #divleft,#divright {
-     background-color: mediumaquamarine;
-     height: 150px;
-     width: 150px;
-     font-family: Arial;
-   }
- </style> 
-<script type="text/javascript">
+        </div>
 
-     $(document).ready(function () {
-         // debugger;
-         loadEmployee();
-         //Function to set events for Drag-Drop
-         function setEvents() {
-             var EmployeeList = $('li');
-             //Set Drag on Each 'li' in the Employeelist
-             $.each(EmployeeList, function (idx, val) {
-                 $('li').on('dragstart', function (evt) {
-                     evt.originalEvent.dataTransfer.setData("Value", evt.target.textContent);
-                     evt.originalEvent.dataTransfer.setData("Text", evt.target.id);
-                     //evt.originalEvent.dataTransfer.setData("Text", this.id);
-                     evt.target.draggable = false;
-                 });
-             });
-             //Set the Drop on the <div>
-             $("#divright").on('drop', function (evt) {
-                 evt.preventDefault();
-                 debugger;
-                 var data = evt.originalEvent.dataTransfer.getData("Value");
-                 var value = evt.originalEvent.dataTransfer.getData("Text");
-                 var lst = $("#selectedEmployeeList");
-                 var li = "<li id=" + value + ">" + value + " " + data + "</li>";
-                 li.textContent = data;
-                 lst.append(li);
-             });
-             //The dragover
-             $("#divright").on('dragover', function (evt) {
-                 evt.preventDefault();
-             });
-         }
-         ///Function to load Employee using call to WEB API
-         function loadEmployee() {
-             var items = "kjkjkljlj";
-             var Id = "1";
 
-             $("#EmployeeList").html(items);
-             setEvents();
-             $.ajax({
-                 url: "/Play",
-                 type: "GET"
-             }).done(function (resp) {
-                 $.each(resp, function (idx, val) {
-                     items += "<li id=" + val.EmployeeId + " draggable='true'>" + val.NameAnimal + "</li>";
-                 });
-                 $("#EmployeeList").html(items);
-                 //$("#hdnID").html(Id);
-                 setEvents();
-             }).error(function (err) {
-                 alert("Error! " + err.status);
-             });
-         }
-     });
-</script>  
+
+
+</body>
+</html>

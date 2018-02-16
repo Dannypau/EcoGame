@@ -227,6 +227,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\23600848_1621489357913991_1980568969_o.jpg" />
+    <Content Include="Images\descarga.jpg" />
+    <Content Include="Images\mataje2.png" />
+    <Content Include="Images\sahino.png" />
+    <Content Include="Images\sahino_mataje.png" />
+    <Content Include="Images\tucan3.png" />
+    <Content Include="Images\tucan_mataje.png" />
+    <Content Include="Images\tucan_sahino_mataje.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -284,11 +292,10 @@
     <Content Include="Views\Profile\Create.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Profile\Delete.cshtml" />
+    <Content Include="Views\Play\View.cshtml" />
     <Content Include="Views\Play\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
