@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
 <style>
     .caja1 {
         width: 250px;
@@ -17,40 +18,40 @@
 <center>
     <article>
         <div class="caja1">
-            <img id="img1" src="~/Images/1.png" width="250" height="200" />
+            <img id="img1" src="~/Images/1.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img2" src="~/Images/2.png" width="250" height="200" />
+            <img id="img2" src="~/Images/2.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img3" src="~/Images/3.png" width="250" height="200" />
+            <img id="img3" src="~/Images/3.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img4" src="~/Images/4.png" width="250" height="200" />
+            <img id="img4" src="~/Images/4.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img5" src="~/Images/5.png" width="250" height="200" />
+            <img id="img5" src="~/Images/5.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img6" src="~/Images/osi.png" width="250" height="200" />
+            <img id="img6" src="~/Images/6.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img7" src="~/Images/4.png" width="250" height="200" />
+            <img id="img7" src="~/Images/7.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img8" src="~/Images/5.png" width="250" height="200" />
+            <img id="img8" src="~/Images/8.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img9" src="~/Images/osi.png" width="250" height="200" />
+            <img id="img9" src="~/Images/9.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img10" src="~/Images/4.png" width="250" height="200" />
+            <img id="img10" src="~/Images/10.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img11" src="~/Images/5.png" width="250" height="200" />
+            <img id="img11" src="~/Images/11.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img12" src="~/Images/osi.png" width="250" height="200" />
+            <img id="img12" src="~/Images/12.jpg" width="250" height="200" />
         </div>
     </article>
     <br />
@@ -59,8 +60,8 @@
     <a id="bh" href="#" class="btn btn-primary btn-lg">JUEGAR DE NUEVO</a>
 </center>
 <script>
-    $("#img1").on("click", function () {
-            console.log("HOLA");
+    $(".caja1").on("click", function () {
+        console.log("HOLA");
     });
 </script>
 
