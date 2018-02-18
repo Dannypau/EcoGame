@@ -51,7 +51,8 @@
             <img id="img11" src="~/Images/11.jpg" width="250" height="200" />
         </div>
         <div class="caja1">
-            <img id="img12" src="~/Images/12.jpg" width="250" height="200" />
+            <img id="img12" src="~/Images/12.jpg" width="250" height="200" onclick="sonido.play()"/>
+            <audio id="sonido" src="~/Sonidos/SummerParadise.mp3"></audio>
         </div>
     </article>
     <br />
@@ -60,8 +61,8 @@
     <a id="bh" href="#" class="btn btn-primary btn-lg">JUEGAR DE NUEVO</a>
 </center>
 <script>
-    $(".caja1").on("click", function () {
-        console.log("HOLA");
+    $(document).ready(function () {
+        var sonido = document.getElementById("sonido");
     });
 </script>
 
