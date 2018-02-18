@@ -64,6 +64,29 @@
     $(document).ready(function () {
         var sonido = document.getElementById("sonido");
     });
+
+    var myArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+
+    $("#bh").on("click", function () {
+
+        var i, j, k;
+        for (i = myArray.length; i; i--) {
+            j = Math.floor(Math.random() * i);
+            k = myArray[i - 1];
+            myArray[i - 1] = myArray[j];
+            myArray[j] = k;
+        }
+        var h;
+        for (h = 0; h < myArray.length; h++)
+        {
+            var url = "/Images/" + myArray[h] + ".jpg";
+            console.log(url);
+
+            $("#img" + (h + 1)).attr("src", url);
+
+                
+        }
+    });
 </script>
 
 
