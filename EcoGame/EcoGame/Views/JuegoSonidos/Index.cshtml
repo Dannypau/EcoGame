@@ -12,7 +12,11 @@
         background: #FCE8CC;
         margin:5px;
         float: left;
+        border-radius: 80%;
      }
+    img{
+        border-radius: 80%;
+    }
 
 </style>
 <center>
@@ -58,7 +62,7 @@
     <br />
     <br />
 
-    <a id="bh" href="#" class="btn btn-primary btn-lg">JUEGAR DE NUEVO</a>
+    <a id="bh" href="#" class="btn btn-primary btn-lg">JUGAR DE NUEVO</a>
 </center>
 <script>
     $(document).ready(function () {
@@ -82,9 +86,7 @@
             var url = "/Images/" + myArray[h] + ".jpg";
             console.log(url);
 
-            $("#img" + (h + 1)).attr("src", url);
-
-                
+            $("#img" + (h + 1)).attr("src", url);           
         }
     });
 </script>
