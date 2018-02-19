@@ -218,14 +218,14 @@
 
 
         <br>
-        <p>ECOSISTEMA MATAJE</p>
+        <p>@Model.NameEcosystem</p>
         <table class="egt">
 
 
 
 
             <tr>
-                <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="drag0" src="~/Images/mataje2.png"></div>
+                <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="drag0" src="~/Images/@(Model.ImgEcosystem)"></div>
 
 
 
@@ -246,6 +246,22 @@
         </table>
 
         <div id="div2" style="display:none"> Score </div>
+        <div> Descripcion ecosistema : <text>@Model.DescEcosystem</text></div>
+        @foreach (var item in Model.Animals)
+        {
+            <tr>
+                <td>
+                    Nombre:
+                    @Html.DisplayFor(modelItem => item.NameAnimal)<br />
+                </td>
+                <td>
+                    Descripcion:
+                    @Html.DisplayFor(modelItem => item.DescAnimal)<br />
+                </td>
+
+
+            </tr>
+        }
 
 
 
