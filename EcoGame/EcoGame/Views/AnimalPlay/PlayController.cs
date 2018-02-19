@@ -8,35 +8,59 @@ namespace EcoGame.Views.AnimalPlay
 {
     public class PlayController : Controller
     {
+        EcoGameModelContainer Db = new EcoGameModelContainer();
         // GET: Play
         public ActionResult Index()
         {
+            
             return View();
+         
         }
 
         // GET: Play
         public ActionResult Cuyabeno()
         {
-            return View();
+            var EcosystemName = "Cuyabeno";
+            var std = (from q in Db.EcosystemSet
+                       where q.NameEcosystem == EcosystemName
+                       select q).FirstOrDefault();
+            return View(std);
+           
         }
 
 
         // GET: Play
         public ActionResult Manglar()
         {
-            return View();
+            var EcosystemName = "Manglar";
+            var std = (from q in Db.EcosystemSet
+                       where q.NameEcosystem == EcosystemName
+                       select q).FirstOrDefault();
+            return View(std);
+           
         }
 
         // GET: Play
         public ActionResult Chimborazo()
         {
-            return View();
+            var EcosystemName = "Chimborazo";
+            var std = (from q in Db.EcosystemSet
+                       where q.NameEcosystem == EcosystemName
+                       select q).FirstOrDefault();
+            return View(std);
+
+            
         }
 
         // GET: Play
         public ActionResult Mataje()
         {
-            return View();
+            var EcosystemName = "Mataje";
+            var std = (from q in Db.EcosystemSet
+                       where q.NameEcosystem == EcosystemName
+                       select q).FirstOrDefault();
+            return View(std);
+            
         }
 
 
