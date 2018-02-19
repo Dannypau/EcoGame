@@ -13,7 +13,7 @@
             <br />
             <br />
             @Html.LabelFor(m => m.PswUser, "Contraseña ")
-            @Html.TextBoxFor(m => m.PswUser)
+            @Html.PasswordFor(m => m.PswUser);
             <div class="jumbotron">
         
 
@@ -30,7 +30,7 @@
         }
 
     <div>
-        @Html.ActionLink("Volver", "Admin", "Login")
+        @Html.ActionLink("Volver", "Index", "Home")
     </div>
 
         <hr />
