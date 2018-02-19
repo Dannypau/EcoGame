@@ -59,6 +59,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -67,6 +70,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -153,10 +162,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\AnimalEcosystemDetailController.cs" />
     <Compile Include="Controllers\EcosystemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JuegoSonidosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -192,6 +203,8 @@
       <DependentUpon>EcoGameModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AnimalVM.cs" />
+    <Compile Include="Views\AnimalPlay\PlayApiController.cs" />
+    <Compile Include="Views\AnimalPlay\PlayController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\EcoGame.mdf" />
@@ -215,6 +228,67 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\0.png" />
+    <Content Include="Images\1.png" />
+    <Content Include="Images\10.png" />
+    <Content Include="Images\11.png" />
+    <Content Include="Images\2.png" />
+    <Content Include="Images\23600848_1621489357913991_1980568969_o.jpg" />
+    <Content Include="Images\3.png" />
+    <Content Include="Images\4.png" />
+    <Content Include="Images\5.png" />
+    <Content Include="Images\6.png" />
+    <Content Include="Images\7.png" />
+    <Content Include="Images\8.png" />
+    <Content Include="Images\9.png" />
+    <Content Include="Images\ardilla.png" />
+    <Content Include="Images\chimborazo.png" />
+    <Content Include="Images\delfin.png" />
+    <Content Include="Images\delfin_hitzail_rio.png" />
+    <Content Include="Images\delfin_puma_rio.png" />
+    <Content Include="Images\delfin_rio.png" />
+    <Content Include="Images\descarga.jpg" />
+    <Content Include="Images\garza.png" />
+    <Content Include="Images\garza_iguana_manglar.png" />
+    <Content Include="Images\garza_manglar.png" />
+    <Content Include="Images\hitzail.png" />
+    <Content Include="Images\hitzail_delfin_puma_rio.png" />
+    <Content Include="Images\hitzail_rio.png" />
+    <Content Include="Images\iguana.png" />
+    <Content Include="Images\iguana_manglar.png" />
+    <Content Include="Images\lagartija.png" />
+    <Content Include="Images\lagartija_chimborazo.png" />
+    <Content Include="Images\lagartija_liebre_chimborazo.png" />
+    <Content Include="Images\lagartija_liebre_vicuna_chimborazo.png" />
+    <Content Include="Images\lagartija_vicuna_chimborazo.png" />
+    <Content Include="Images\liebre1.png" />
+    <Content Include="Images\liebre_chimborazo.png" />
+    <Content Include="Images\manglar.png" />
+    <Content Include="Images\mataje2.png" />
+    <Content Include="Images\pajaro.png" />
+    <Content Include="Images\pajaro_mataje.png" />
+    <Content Include="Images\puma.png" />
+    <Content Include="Images\puma_hitzail_rio.png" />
+    <Content Include="Images\puma_rio.png" />
+    <Content Include="Images\rana.png" />
+    <Content Include="Images\rio.png" />
+    <Content Include="Images\sahino.png" />
+    <Content Include="Images\sahino_mataje.png" />
+    <Content Include="Images\sahino_pajaro_mataje.png" />
+    <Content Include="Images\sapo.png" />
+    <Content Include="Images\sapo_garza_iguana_manglar.png" />
+    <Content Include="Images\sapo_garza_manglar.png" />
+    <Content Include="Images\sapo_iguana_manglar.png" />
+    <Content Include="Images\sapo_manglar.png" />
+    <Content Include="Images\tortuga.png" />
+    <Content Include="Images\tucan3.png" />
+    <Content Include="Images\tucan_mataje.png" />
+    <Content Include="Images\tucan_pajaro_mataje.png" />
+    <Content Include="Images\tucan_sahino_mataje.png" />
+    <Content Include="Images\tucan_sahino_pajaro_mataje.png" />
+    <Content Include="Images\vicuna.png" />
+    <Content Include="Images\vicuna_chimborazo.png" />
+    <Content Include="Images\vicuna_liebre_chimborazo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -265,11 +339,21 @@
     <Content Include="Views\Ecosystem\Delete.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\Login.cshtml" />
-    <Content Include="Views\Login\Player.cshtml" />
+    <Content Include="Views\Login\Admin.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Profile\Create.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Profile\Delete.cshtml" />
+    <Content Include="Views\Play\View.cshtml" />
+    <Content Include="Views\Play\Index.cshtml" />
+    <Content Include="Views\Play\Cuyabeno.cshtml" />
+    <Content Include="Views\Play\Manglar.cshtml" />
+    <Content Include="Views\Play\Chimborazo.cshtml" />
+    <Content Include="Views\Play\Mataje.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

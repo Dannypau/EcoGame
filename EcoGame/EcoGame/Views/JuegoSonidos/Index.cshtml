@@ -1,0 +1,339 @@
+﻿@model EcoGame.FilterConfig
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<style>
+    .caja1 
+    {
+        width: 250px;
+        height: 200px;
+        background: #FCE8CC;
+        margin:5px;
+        float: left;
+        border-radius: 80%;
+     }
+    
+    img
+    {
+        border-radius: 80%;
+    }
+
+    h1
+	{
+		text-align:center;
+	}
+	
+	#miCanvas
+	{
+		border:dotted 2px yellow;
+		background:#0B0B61;
+	}
+
+</style>
+<center>
+    <article>
+
+        <canvas id="miCanvas"></canvas>
+        <audio id="0" src="~/sounds/0.WAV"</audio>
+        <audio id="1" src="~/sounds/1.WAV"</audio>
+        <audio id="2" src="~/sounds/2.WAV"</audio>
+        <audio id="3" src="~/sounds/3.WAV"</audio>
+        <audio id="4" src="~/sounds/4.WAV"</audio>
+        <audio id="5" src="~/sounds/5.WAV"</audio>
+    
+        <div class="caja1">
+            <img id="img12" src="~/Images/12.jpg" width="250" height="200" onclick="sonido.play()"/>
+            <audio id="sonido" src="~/Sonidos/SummerParadise.mp3"></audio>
+        </div>
+    </article>
+    <br />
+    <br />
+
+    <a id="bh" href="#" class="btn btn-primary btn-lg">JUGAR DE NUEVO</a>
+</center>
+<script>
+    $(document).ready(function () {
+        var sonido = document.getElementById("sonido");
+    });
+
+    var ctx, canvas;
+    var primerCarta = true;
+    var cartaPrimera, cartaSegunda;
+    var colorDelante = "#D8D8D8";
+    var colorAtras = "white";
+    var colorCanvas = "black";
+    var inicioX = 30;
+    var inicioY = 30;
+    var cartaMargen = 30;
+    var cartaLon = 30;
+    var cartaAncho = cartaLon * 4;
+    var cartaAlto = cartaLon * 4;
+    var cartas_array = new Array();
+    var iguales = false;
+    var cartas = 0;
+
+    var imagenes = new Array(12);
+
+    function cargarImagenes() {
+
+    }
+
+    window.onload = cargarImagenes;
+
+    function cargarImagenes() {
+        console.log("Empieza el prog");
+        imagenes[cartas] = new Image();
+        imagenes[cartas].src = "../Images/" + cartas + ".png";
+        cartas++;
+        if (cartas < 12) {
+            imagenes[cartas - 1].onload = cargarImagenes;
+        } else {
+            imagenes[cartas - 1].onload = iniciar;
+        }
+    }
+
+    function iniciar() {
+        cartas = 0;
+        canvas = document.getElementById("miCanvas");
+        canvas.width = 630;
+        canvas.height = 510;
+        if (canvas && canvas.getContext) {
+            ctx = canvas.getContext("2d");
+            if (ctx) {
+                canvas.removeEventListener("click", iniciar, false);
+                canvas.addEventListener("click", selecciona, false);
+                tablero();
+                barajar();
+                aciertos();
+            } else {
+                document.write("Tu navegador no soporta canvas");
+            }
+        }
+    }
+
+    function tablero() {
+        var i, j;
+        var carta;
+        var x = inicioX;
+        var y = inicioY;
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 3; j++) {
+                carta = new Carta(x, y, cartaAncho, cartaAlto, i);
+                cartas_array.push(carta);
+                carta.dibuja();
+
+                y += inicioY + cartaAlto;
+            }
+            y = inicioY;
+            x += cartaAncho + cartaMargen;
+        }
+    }
+
+    function Carta(x, y, ancho, largo, info) {
+        this.x = x;
+        this.y = y;
+        this.ancho = ancho;
+        this.largo = largo;
+        this.info = info;
+        this.dibuja = dibujaCarta;
+    }
+    function dibujaCarta() {
+        ctx.fillStyle = colorAtras;
+        ctx.fillRect(this.x, this.y, this.ancho, this.largo);
+    }
+
+
+    function barajar() {
+        var i, j;
+        var aTemp1 = new Array();
+        var aTemp2 = new Array();
+        //var lon=cartas_array.length/2;
+        var lon = cartas_array.length;
+        for (i = 0; i < lon; i++) {
+            console.log("Primer array");
+            do {
+                j = Math.floor(Math.random() * lon);
+                console.log("%i Numero generado: %i", i, j);
+            } while (aTemp1.indexOf(j) != -1)
+            aTemp1.push(j);
+        }
+        console.log("Array generado");
+        for (i = 0; i < lon; i++) {
+            cartas_array[i].info = aTemp1[i];
+            console.log("Num %i", aTemp1[i]);
+        }
+    }
+
+    function ajusta(xx, yy) {
+        var posCanvas = canvas.getBoundingClientRect();
+        var x = xx - posCanvas.left;
+        var y = yy - posCanvas.top;
+        return { x: x, y: y }
+    }
+
+    function selecciona(e) {
+        console.log("Ingresa a evento seleccion");
+        var pos = ajusta(e.clientX, e.clientY);
+        //alert(pos.x+','+pos.y);
+        console.log("Posicion seleccionada %i", pos.x);
+
+        var n;
+        console.log("Carta num %i", e.info);
+
+        for (var i = 0; i < cartas_array.length; i++) {
+            console.log("Iteracion %i", i);
+            var carta = cartas_array[i];
+            n = carta.info;
+            console.log("Carta num %i", carta.info);
+            if (carta.x > 0) {
+                if ((pos.x > carta.x) && (pos.x < carta.x + carta.ancho) && (pos.y > carta.y) && (pos.y < carta.y + carta.largo)) {
+                    if ((primerCarta) || (i != cartaPrimera)) {
+                        break;
+                    }
+                }
+            }
+            else {
+                console.log("No estra dentro de ninguna carta");
+            }
+
+
+
+
+        }
+
+
+        console.log("esta si esssssssss %i", n);
+
+        if (n == 6 || n == 7 || n == 8 || n == 9 || n == 10 || n == 11) {
+            var op = n;
+        }
+
+
+        switch (op) {
+            case 6:
+                var audio = document.getElementById("0");
+                audio.play();
+                break;
+
+            case 7:
+                var audio = document.getElementById("1");
+                audio.play();
+                break;
+
+            case 8:
+                var audio = document.getElementById("2");
+                audio.play();
+                break;
+
+            case 9:
+                var audio = document.getElementById("3");
+                audio.play();
+                break;
+
+            case 10:
+                var audio = document.getElementById("4");
+                audio.play();
+                break;
+
+            case 11:
+                var audio = document.getElementById("5");
+                audio.play();
+                break;
+        }
+
+
+
+        if (i < cartas_array.length) {
+
+
+
+
+            if (primerCarta) {
+                console.log("Siempre hace una vez");
+                cartaPrimera = i;
+                primerCarta = false;
+                pinta(carta);
+            }
+
+            else {
+                canvas.removeEventListener("click", selecciona, false);
+                cartaSegunda = i;
+                pinta(carta);
+                primerCarta = true;
+                console.log("HAce la comparacion:%i y %i", cartas_array[cartaPrimera].info, cartas_array[cartaSegunda].info
+                );
+
+                if ((cartas_array[cartaPrimera].info - cartas_array[cartaSegunda].info == 6) || (cartas_array[cartaPrimera].info - cartas_array[cartaSegunda].info == -6)) {
+                    iguales = true;
+                    cartas++;
+                    aciertos();
+                }
+                else {
+                    iguales = false;
+                }
+                setTimeout(volteaCarta, 1000);
+            }
+        }
+    }
+
+    function pinta(carta) {
+        ctx.fillStyle = colorDelante;
+        ctx.fillRect(carta.x, carta.y, carta.ancho, carta.largo);
+
+        ctx.font = "bold 40px comic";
+        ctx.fillStyle = "black";
+        //ctx.fillText(String(carta.info), carta.x+carta.ancho/2-10, carta.y+carta.largo/2+10);
+        ctx.drawImage(imagenes[carta.info], carta.x, carta.y, carta.ancho, carta.largo);
+    }
+
+    function volteaCarta() {
+        if (!iguales) {
+            cartas_array[cartaPrimera].dibuja();
+            cartas_array[cartaSegunda].dibuja();
+        }
+        else {
+            ctx.clearRect(cartas_array[cartaPrimera].x,
+                            cartas_array[cartaPrimera].y,
+                            cartas_array[cartaPrimera].ancho,
+                            cartas_array[cartaPrimera].largo);
+
+            ctx.clearRect(cartas_array[cartaSegunda].x,
+                            cartas_array[cartaSegunda].y,
+                            cartas_array[cartaSegunda].ancho,
+                            cartas_array[cartaSegunda].largo);
+
+            cartas_array[cartaPrimera].x = -1;
+            cartas_array[cartaSegunda].x = -1;
+        }
+
+        if (cartas < 6) {
+            canvas.addEventListener("click", selecciona, false);
+        }
+        else {
+            cartas = 0;
+            cartas_array = [];
+            canvas.addEventListener("click", iniciar, false);
+            ctx.fillStyle = "white";
+            ctx.fillText("JUEGO TERMINADO", 120, canvas.height / 2);
+        }
+    }
+
+    function aciertos() {
+        ctx.save();
+        ctx.clearRect(0, 480, canvas.width, canvas.height);
+        ctx.fillStyle = "gray"
+        ctx.fillRect(0, 480, canvas.width, canvas.height);
+        ctx.font = "bold 40px comic";
+        ctx.fillStyle = "black";
+        ctx.fillText("Aciertos: " + String(cartas), canvas.width - 220, 510);
+        ctx.restore();
+    }
+    
+</script>
+
+
+
+

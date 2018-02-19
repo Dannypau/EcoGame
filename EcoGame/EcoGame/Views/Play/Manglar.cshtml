@@ -1,0 +1,261 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        #div1 {
+            width: 600px;
+            height: 375px;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var score = 0;
+        function allowDrop(ev) {
+            ev.preventDefault();
+
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+            ev.dataTransfer.setData("img", document.getElementById('drag0').src);
+
+
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+
+            console.log("en drop :" + data);
+            var img = document.createElement("img");
+            switch (data) {
+
+                case 'drag2':
+                    ev.target.appendChild(document.getElementById(data));
+                    var b = ev.dataTransfer.getData("img");
+                    console.log(ev.dataTransfer.getData("img"));
+                    var c = document.getElementById("div2");
+                    score = score + 10;
+                    if (b == 'http://localhost:51628/Images/manglar.png') {
+
+                        img.src = "/Images/garza_manglar.png";
+                        img.id = "drag0";
+
+
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+                    } else if (b == 'http://localhost:51628/Images/sapo_manglar.png') {
+                        img.src = "/Images/sapo_garza_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+
+
+                    } else if (b == 'http://localhost:51628/Images/iguana_manglar.png') {
+                        img.src = "/Images/garza_iguana_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+                        document.getElementById("div2").style.display = 'block';
+
+
+                    } else if (b == 'http://localhost:51628/Images/garza_iguana_manglar.png') {
+                        img.src = "/Images/sapo_garza_iguana_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+                        document.getElementById("div2").style.display = 'block';
+
+
+
+
+
+                    }
+
+                    break;
+
+
+                case 'drag1':
+                    ev.target.appendChild(document.getElementById(data));
+                    var b = ev.dataTransfer.getData("img");
+                    console.log('img: ' + b);
+                    var c = document.getElementById("div2");
+                    score = score + 10;
+                    if (b == 'http://localhost:51628/Images/manglar.png') {
+
+                        img.src = "/Images/sapo_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+
+                        document.getElementById("div1").appendChild(img);
+
+                    } else if (b == 'http://localhost:51628/Images/iguana_manglar.png') {
+                        img.src = "/Images/sapo_iguana_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+
+
+                    } else if (b == 'http://localhost:51628/Images/garza_manglar.png') {
+                        img.src = "/Images/sapo_garza_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+                        document.getElementById("div2").style.display = 'block';
+
+
+                    } else if (b == 'http://localhost:51628/Images/garza_iguana_manglar.png') {
+                        img.src = "/Images/sapo_garza_iguana_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+                        document.getElementById("div2").style.display = 'block';
+
+
+
+
+
+
+
+                    }
+
+
+                    break;
+
+                case 'drag3':
+                    ev.target.appendChild(document.getElementById(data));
+                    var b = ev.dataTransfer.getData("img");
+                    console.log(ev.dataTransfer.getData("img"));
+                    var c = document.getElementById("div2");
+                    score = score + 10;
+                    if (b == 'http://localhost:51628/Images/manglar.png') {
+
+                        img.src = "/Images/iguana_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+
+                        document.getElementById("div1").appendChild(img);
+
+                    } else if (b == 'http://localhost:51628/Images/garza_manglar.png') {
+                        img.src = "/Images/garza_iguana_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+
+
+                    } else if (b == 'http://localhost:51628/Images/sapo_manglar.png') {
+                        img.src = "/Images/sapo_iguana_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+
+
+
+
+
+
+
+                    }
+                    else if (b == 'http://localhost:51628/Images/sapo_garza_manglar.png') {
+                        img.src = "/Images/sapo_garza_iguana_manglar.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+
+                        document.getElementById("div2").style.display = 'block';
+
+
+
+
+
+                    }
+
+
+
+                    break;
+                default:
+                    var b = ev.dataTransfer.getData("img");
+                    console.log(ev.dataTransfer.getData("img"));
+                    score = score - 10;
+                    break;
+
+
+
+            }
+
+            var total = (100 * score) / 30;
+            document.getElementById("div2").innerHTML = Math.round(total);
+            console.log(score);
+
+
+
+
+        }
+        function erase(ev) {
+            document.getElementById("div1").innerHTML = "";
+        }
+        function visible_div() {
+            var elemento = document.getElementById("div2");
+            elemento.style.display = 'block';
+        }
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <div class="jumbotron" style="background-color:white; opacity: 0.8;">
+
+
+
+
+        <br>
+        <p>ECOSISTEMA MANGLAR</p>
+        <table class="egt">
+
+
+
+
+            <tr>
+                <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="drag0" src="~/Images/manglar.png"></div>
+
+
+
+
+
+            </tr>
+
+            <tr>
+                <td><img id="drag1" src="~/Images/sapo.png" draggable="true" ondragstart="drag(event)"></td>
+                <td><img id="drag2" src="~/Images/garza.png" draggable="true" ondragstart="drag(event)"></td>
+                <td><img id="drag3" src="~/Images/iguana.png" draggable="true" ondragstart="drag(event)"></td>
+                <td><img id="drag4" src="~/Images/delfin.png" draggable="true" ondragstart="drag(event)"></td>
+                <td><img id="drag5" src="~/Images/ardilla.png" draggable="true" ondragstart="drag(event)"></td>
+
+            </tr>
+
+
+        </table>
+
+        <div id="div2" style="display:none"> Score </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>

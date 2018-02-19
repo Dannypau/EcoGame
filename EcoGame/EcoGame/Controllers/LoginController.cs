@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace EcoGame.Controllers
 {
     public class LoginController : Controller
@@ -14,7 +15,7 @@ namespace EcoGame.Controllers
         {
             return View();
         }
-        public ActionResult Player()
+        public ActionResult Admin()
         {
             return View();
         }
@@ -28,18 +29,35 @@ namespace EcoGame.Controllers
                 var objCustomer = (from q in DBContext.UserSet
                                    where q.NameUser ==std.NameUser
                                    select q).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                try
+                {
 
-                
-                    if(objCustomer.Perfil.ProfileId == 2)
+                    if (objCustomer.Perfil.ProfileId == 2)
                     {
-                        return RedirectToAction("Player", "Login");
-                     }
+                        return RedirectToAction("Admin", "Login");
+                    }
                     else
-                     {
-                        return View();
+                    {
 
-                      }
-                
+                        return RedirectToAction("Index", "Home");
+
+                    }
+                }catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Usuario no registrado");
+                }
+
+            }
+           
+            return View();
+            
+
+
+
+
+  
 
             
   
