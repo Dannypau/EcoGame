@@ -35,8 +35,15 @@ namespace EcoGame.Controllers
                 {
 
                     if (objCustomer.Perfil.ProfileId == 2)
+              
                     {
-                        return RedirectToAction("Admin", "Login");
+                        if (objCustomer.NameUser == std.NameUser && objCustomer.PswUser == std.PswUser)
+                        {
+                            return RedirectToAction("Admin", "Login");
+                        }
+                        else
+                        { ModelState.AddModelError("", "Usuario o contraseña incorrectos"); }
+                       
                     }
                     else
                     {
