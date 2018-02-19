@@ -33,6 +33,13 @@ namespace EcoGame.Views.AnimalPlay
             return View();
         }
 
+        // GET: Play
+        public ActionResult Mataje()
+        {
+            return View();
+        }
+
+
 
 
 

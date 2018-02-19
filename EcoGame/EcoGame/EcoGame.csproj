@@ -348,6 +348,10 @@
     <Content Include="Views\Profile\Delete.cshtml" />
     <Content Include="Views\Play\View.cshtml" />
     <Content Include="Views\Play\Index.cshtml" />
+    <Content Include="Views\Play\Cuyabeno.cshtml" />
+    <Content Include="Views\Play\Manglar.cshtml" />
+    <Content Include="Views\Play\Chimborazo.cshtml" />
+    <Content Include="Views\Play\Mataje.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
