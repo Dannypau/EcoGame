@@ -10,15 +10,17 @@ namespace EcoGame.Models
     {
 
         [Required]
-        [MaxLength(2)]
         [ExcludeSpecialCharacters(ErrorMessage = "No se acepta caracteres especiales")]
         public string SoundAnimal { get; set; }
 
         [Required]
-        [MaxLength(2)]
+        [MaxLength(15)]
         [ExcludeSpecialCharacters(ErrorMessage = "No se acepta caracteres especiales")]
         public string AnimalName { get; set; }
 
+        [Required]
+        [MaxLength(25)]
+        public string DescAnimal { get; set; }
 
 
 
