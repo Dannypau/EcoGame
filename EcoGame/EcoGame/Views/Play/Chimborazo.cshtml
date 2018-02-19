@@ -1,6 +1,8 @@
-﻿@{
+﻿
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -22,14 +24,14 @@
         function drag(ev) {
             ev.dataTransfer.setData("text", ev.target.id);
             ev.dataTransfer.setData("img", document.getElementById('drag0').src);
-          
+
 
         }
 
         function drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
-          
+
             console.log("en drop :" + data);
             var img = document.createElement("img");
             switch (data) {
@@ -40,51 +42,42 @@
                     console.log(ev.dataTransfer.getData("img"));
                     var c = document.getElementById("div2");
                     score = score + 10;
-                    if (b == 'http://localhost:51628/Images/mataje2.png') {
+                    if (b == 'http://localhost:51628/Images/chimborazo.png') {
 
-                        img.src = "/Images/sahino_mataje.png";
+                        img.src = "/Images/liebre_chimborazo.png";
                         img.id = "drag0";
-                 
-                      
+
+
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
-                    } else if (b == 'http://localhost:51628/Images/tucan_mataje.png') {
-                        img.src = "/Images/tucan_sahino_mataje.png";
+                    } else if (b == 'http://localhost:51628/Images/vicuna_chimborazo.png') {
+                        img.src = "/Images/vicuna_liebre_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
-                     
 
-                    } else if (b == 'http://localhost:51628/Images/tucan_pajaro_mataje.png') {
-                        img.src = "/Images/tucan_sahino_pajaro_mataje.png";
+
+                    } else if (b == 'http://localhost:51628/Images/lagartija_chimborazo.png') {
+                        img.src = "/Images/lagartija_liebre_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
                         document.getElementById("div2").style.display = 'block';
-                     
 
-                    } else if (b == 'http://localhost:51628/Images/tucan_sahino_mataje.png') {
-                        img.src = "/Images/tucan_sahino_pajaro_mataje.png";
+
+                    } else if (b == 'http://localhost:51628/Images/lagartija_vicuna_chimborazo.png') {
+                        img.src = "/Images/lagartija_liebre_vicuna_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
                         document.getElementById("div2").style.display = 'block';
-                  
-            
-                        
-                       
 
-                    } else {
-                        img.src = "/Images/sahino_pajaro_mataje.png";
-                        img.id = "drag0";
-                        document.getElementById("div1").innerHTML = "";
-                        document.getElementById("div1").appendChild(img);
-                       
+
 
 
 
                     }
-                     
+
                     break;
 
 
@@ -94,48 +87,41 @@
                     console.log('img: ' + b);
                     var c = document.getElementById("div2");
                     score = score + 10;
-                    if (b == 'http://localhost:51628/Images/mataje2.png') {
+                    if (b == 'http://localhost:51628/Images/chimborazo.png') {
 
-                        img.src = "/Images/tucan_mataje.png";
+                        img.src = "/Images/vicuna_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
 
                         document.getElementById("div1").appendChild(img);
-           
-                    } else if (b == 'http://localhost:51628/Images/sahino_mataje.png') {
-                        img.src = "/Images/tucan_sahino_mataje.png";
+
+                    } else if (b == 'http://localhost:51628/Images/liebre_chimborazo.png') {
+                        img.src = "/Images/vicuna_liebre_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
-                       
 
-                    } else if (b == 'http://localhost:51628/Images/sahino_pajaro_mataje.png') {
-                        img.src = "/Images/tucan_sahino_pajaro_mataje.png";
-                        img.id = "drag0";
-                        document.getElementById("div1").innerHTML = "";
-                        document.getElementById("div1").appendChild(img);
-                        document.getElementById("div2").style.display = 'block';
-                        
 
-                    } else if (b == 'http://localhost:51628/Images/tucan_pajaro_mataje.png') {
-                        img.src = "/Images/tucan_sahino_pajaro_mataje.png";
+                    } else if (b == 'http://localhost:51628/Images/lagartija_chimborazo.png') {
+                        img.src = "/Images/lagartija_vicuna_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
                         document.getElementById("div2").style.display = 'block';
-                      
 
-                    
-                        
 
-                        
-
-                    } else {
-                        img.src = "/Images/tucan_pajaro_mataje.png";
+                    } else if (b == 'http://localhost:51628/Images/lagartija_liebre_chimborazo.png') {
+                        img.src = "/Images/lagartija_liebre_vicuna_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
-                       
+                        document.getElementById("div2").style.display = 'block';
+
+
+
+
+
+
 
                     }
 
@@ -148,48 +134,48 @@
                     console.log(ev.dataTransfer.getData("img"));
                     var c = document.getElementById("div2");
                     score = score + 10;
-                    if (b == 'http://localhost:51628/Images/mataje2.png') {
+                    if (b == 'http://localhost:51628/Images/chimborazo.png') {
 
-                        img.src = "/Images/pajaro_mataje.png";
+                        img.src = "/Images/lagartija_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
 
                         document.getElementById("div1").appendChild(img);
-            
-                    } else if (b == 'http://localhost:51628/Images/tucan_mataje.png') {
-                        img.src = "/Images/tucan_pajaro_mataje.png";
-                        img.id = "drag0";
-                        document.getElementById("div1").innerHTML = "";
-                        document.getElementById("div1").appendChild(img);
-                        
 
-                    } else if (b == 'http://localhost:51628/Images/sahino_mataje.png') {
-                        img.src = "/Images/sahino_pajaro_mataje.png";
+                    } else if (b == 'http://localhost:51628/Images/vicuna_chimborazo.png') {
+                        img.src = "/Images/lagartija_vicuna_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
 
-                   
-                       
+
+                    } else if (b == 'http://localhost:51628/Images/liebre_chimborazo.png') {
+                        img.src = "/Images/lagartija_liebre_chimborazo.png";
+                        img.id = "drag0";
+                        document.getElementById("div1").innerHTML = "";
+                        document.getElementById("div1").appendChild(img);
+
+
+
 
 
 
 
                     }
-                    else if (b == 'http://localhost:51628/Images/tucan_sahino_mataje.png') {
-                        img.src = "/Images/tucan_sahino_pajaro_mataje.png";
+                    else if (b == 'http://localhost:51628/Images/vicuna_liebre_chimborazo.png') {
+                        img.src = "/Images/lagartija_liebre_vicuna_chimborazo.png";
                         img.id = "drag0";
                         document.getElementById("div1").innerHTML = "";
                         document.getElementById("div1").appendChild(img);
-                        
+
                         document.getElementById("div2").style.display = 'block';
-                   
-                        
-                
+
+
+
 
 
                     }
-                  
+
 
 
                     break;
@@ -199,16 +185,16 @@
                     score = score - 10;
                     break;
 
-                   
+
 
             }
 
             var total = (100 * score) / 30;
             document.getElementById("div2").innerHTML = Math.round(total);
             console.log(score);
-            
-        
-           
+
+
+
 
         }
         function erase(ev) {
@@ -220,7 +206,7 @@
         }
 
 
-        
+
 
 
     </script>
@@ -232,44 +218,45 @@
 
 
         <br>
-        <p>ECOSISTEMA MATAJE</p>
-        <table class="egt">  
-           
+        <p>ECOSISTEMA CHIMBORAZO</p>
+        <table class="egt">
+
 
 
 
             <tr>
-                <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="drag0" src="~/Images/mataje2.png"></div>
-                
-                
+                <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="drag0" src="~/Images/chimborazo.png"></div>
+
+
 
 
 
             </tr>
 
             <tr>
-                <td><img id="drag1" src="~/Images/tucan3.png" draggable="true" ondragstart="drag(event)"></td>
-                <td><img id="drag2" src="~/Images/sahino.png" draggable="true" ondragstart="drag(event)"></td>
-                <td><img id="drag3" src="~/Images/pajaro.png" draggable="true" ondragstart="drag(event)"></td>
+                <td><img id="drag1" src="~/Images/vicuna.png" draggable="true" ondragstart="drag(event)"></td>
+                <td><img id="drag2" src="~/Images/liebre1.png" draggable="true" ondragstart="drag(event)"></td>
+                <td><img id="drag3" src="~/Images/lagartija.png" draggable="true" ondragstart="drag(event)"></td>
                 <td><img id="drag4" src="~/Images/puma.png" draggable="true" ondragstart="drag(event)"></td>
                 <td><img id="drag5" src="~/Images/ardilla.png" draggable="true" ondragstart="drag(event)"></td>
-                 
+
             </tr>
-           
+
 
         </table>
-        
+
         <div id="div2" style="display:none"> Score </div>
-      
-           
-      
+
+
+
     </div>
 
 
-    
+
 
 
 
 
 </body>
 </html>
+

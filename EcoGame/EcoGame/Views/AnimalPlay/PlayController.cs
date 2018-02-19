@@ -13,5 +13,28 @@ namespace EcoGame.Views.AnimalPlay
         {
             return View();
         }
+
+        // GET: Play
+        public ActionResult Cuyabeno()
+        {
+            return View();
+        }
+
+
+        // GET: Play
+        public ActionResult Manglar()
+        {
+            return View();
+        }
+
+        // GET: Play
+        public ActionResult Chimborazo()
+        {
+            return View();
+        }
+
+
+
+
     }
 }
