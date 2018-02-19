@@ -242,6 +242,11 @@
     <Content Include="Images\8.png" />
     <Content Include="Images\9.png" />
     <Content Include="Images\ardilla.png" />
+    <Content Include="Images\cardenal.png" />
+    <Content Include="Images\cardenal_mataje.png" />
+    <Content Include="Images\cardenal_sahino_mataje.png" />
+    <Content Include="Images\cardenal_sahino_tucan_mataje.png" />
+    <Content Include="Images\cardenal_tucan_mataje.png" />
     <Content Include="Images\chimborazo.png" />
     <Content Include="Images\delfin.png" />
     <Content Include="Images\delfin_hitzail_rio.png" />
