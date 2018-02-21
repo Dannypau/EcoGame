@@ -212,55 +212,66 @@
 
     </script>
 </head>
+
+
 <body>
-    <div class="jumbotron" style="background-color:white; opacity: 0.8;">
+    <div class="jumbotron" style="background-color:white; opacity: 0.95;">
 
-
-
-
-        <br>
-        <p>@Model.NameEcosystem</p>
-        <table class="egt">
-
-
-
-
+        @Html.ActionLink("Volver", "Index", "Home")
+        
+        <table style="width:100%">
             <tr>
-                <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="drag0" src="~/Images/@(Model.ImgEcosystem)" ></div>
+                <td>
+                    <div class="jumbotron">
+                        <h1>@Model.NameEcosystem</h1>
+                        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <img class="img-responsive" id="drag0" src="~/Images/@(Model.ImgEcosystem)">
+                        </div>
+                    </div>
+                </td>
 
+                <td style="color: forestgreen; font-size:36px">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </td>
 
+                <td>
+                    <div class="jumbotron">
+                        <h2>SCORE</h2>
+                        <div id="div2" style=" color:forestgreen ;text-align:center">
+                            <h1>Score</h1>
+                        </div>
+                    </div>
+                    
+                    <div class="jumbotron" style="text-align:center">
+                        <img id="drag1" src="~/Images/vicuna.png" style="max-height:15vh" draggable="true" ondragstart="drag(event)">
+                        <img id="drag2" src="~/Images/liebre1.png" style="max-height:15vh" draggable="true" ondragstart="drag(event)">
+                        <img id="drag3" src="~/Images/lagartija.png" style="max-height:15vh" draggable="true" ondragstart="drag(event)">
+                        <img id="drag4" src="~/Images/puma.png" style="max-height:15vh" draggable="true" ondragstart="drag(event)">
+                        <img id="drag5" src="~/Images/ardilla.png" style="max-height:15vh" draggable="true" ondragstart="drag(event)">
+                    </div>
 
-
-
-            </tr>
-
-            <tr>
-                <td><img id="drag1" src="~/Images/vicuna.png" draggable="true" ondragstart="drag(event)"></td>
-                <td><img id="drag2" src="~/Images/liebre1.png" draggable="true" ondragstart="drag(event)"></td>
-                <td><img id="drag3" src="~/Images/lagartija.png" draggable="true" ondragstart="drag(event)"></td>
-                <td><img id="drag4" src="~/Images/puma.png" draggable="true" ondragstart="drag(event)"></td>
-                <td><img id="drag5" src="~/Images/ardilla.png" draggable="true" ondragstart="drag(event)"></td>
-
-            </tr>
-
-
-        </table>
+                </td>
+        </tr>
+    </table>
+        
 
         <div id="div2" style="display:none"> Score </div>
         <div> Descripcion ecosistema : <text>@Model.DescEcosystem</text></div>
         @foreach (var item in Model.Animals)
-        {
-            <tr>
-                <td> Nombre:
-                    @Html.DisplayFor(modelItem => item.NameAnimal)<br />
-                </td>
-                <td> Descripcion:
-                    @Html.DisplayFor(modelItem => item.DescAnimal)<br />
-                </td>
-               
+    {
+        <tr>
+            <td>
+                Nombre:
+                @Html.DisplayFor(modelItem => item.NameAnimal)<br />
+            </td>
+            <td>
+                Descripcion:
+                @Html.DisplayFor(modelItem => item.DescAnimal)<br />
+            </td>
 
-            </tr>
-        }
+
+        </tr>
+}
 
 
 
