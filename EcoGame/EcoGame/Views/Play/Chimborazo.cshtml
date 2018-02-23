@@ -216,16 +216,16 @@
 
 <body>
     <div class="jumbotron" style="background-color:white; opacity: 0.95;">
-
+        <img src="~/Images/logo.png" width="200" />
         @Html.ActionLink("Volver", "Index", "Home")
-        
-        <table style="width:100%">
+
+        <table style="width:40%">
             <tr>
                 <td>
                     <div class="jumbotron">
                         <h1>@Model.NameEcosystem</h1>
                         <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <img class="img-responsive" id="drag0" src="~/Images/@(Model.ImgEcosystem)">
+                            <img class="img-responsive" id="drag0" src="~/Images/@(Model.ImgEcosystem)" />
                         </div>
                     </div>
                 </td>
@@ -235,13 +235,14 @@
                 </td>
 
                 <td>
-                    <div class="jumbotron">
-                        <h2>SCORE</h2>
-                        <div id="div2" style=" color:forestgreen ;text-align:center">
-                            <h1>Score</h1>
+                    <div class="jumbotron" style=" color:forestgreen ;text-align:center">
+                        <h2>TOTAL</h2>
+                        <div id="div2">
+                            <h3>Score</h3>
+                            <p>Si te equivocas será restado</p>
                         </div>
                     </div>
-                    
+
                     <div class="jumbotron" style="text-align:center">
                         <img id="drag1" src="~/Images/vicuna.png" style="max-height:15vh" draggable="true" ondragstart="drag(event)">
                         <img id="drag2" src="~/Images/liebre1.png" style="max-height:15vh" draggable="true" ondragstart="drag(event)">
@@ -251,38 +252,14 @@
                     </div>
 
                 </td>
-        </tr>
-    </table>
-        
-
-        <div id="div2" style="display:none"> Score </div>
-        <div> Descripcion ecosistema : <text>@Model.DescEcosystem</text></div>
-        @foreach (var item in Model.Animals)
-    {
-        <tr>
-            <td>
-                Nombre:
-                @Html.DisplayFor(modelItem => item.NameAnimal)<br />
-            </td>
-            <td>
-                Descripcion:
-                @Html.DisplayFor(modelItem => item.DescAnimal)<br />
-            </td>
-
-
-        </tr>
-}
-
-
-
+            </tr>
+        </table>
+        <div>
+            <h2 style="text-align:center">DESCRIPCIÓN </h2>
+            <text style="color:blueviolet">
+                @Model.DescEcosystem
+            </text>
+        </div>
     </div>
-
-
-
-
-
-
-
 </body>
 </html>
-
